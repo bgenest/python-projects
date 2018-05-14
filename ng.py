@@ -2,7 +2,7 @@
 #ye ye ye ye ye
 print("welcome to random name Generator! ")
 
-print("Press ENTER for meme magic")
+print("Press ENTER for name magic")
 
 x= input()
 
