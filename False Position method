@@ -1,13 +1,10 @@
 from prettytable import PrettyTable
 
-
-
 XL = float(.5)
-
 
 XU = float(1)
 
-def volume(x):
+def function(x):
    return -25+82*x-90*x**2+44*x**3-8*x**4+0.7*x**5
 
 t = PrettyTable(["Iteration", "Xl", "XU", "F(XL)", "F(XU)", "F(XR)*F(XU)", "XR", "F(XR)", "EA"])#headers
@@ -16,12 +13,12 @@ EA = 100
 
 x = 0
 
-Xr =  XU - (volume(XU)*(XL-XU))/(volume(XL)-volume(XU))
+Xr =  XU - (function(XU)*(XL-XU))/(function(XL)-function(XU))
 
-t.add_row([x, XL, XU, volume(XL), volume(XU), volume(XL) * volume(Xr), Xr, volume(Xr), EA])
+t.add_row([x, XL, XU, function(XL), function(XU), function(XL) * function(Xr), Xr, function(Xr), EA])
 
 while EA > .2:
-    if volume(XL)*volume(Xr) < 0:
+    if function(XL)*function(Xr) < 0:
 
          XU=Xr
 
@@ -30,13 +27,13 @@ while EA > .2:
         XL = Xr
 
     Xrl = Xr
-    Xr = XU - (volume(XU)*(XL - XU)) / (volume(XL) - volume(XU))
+    Xr = XU - (function(XU)*(XL - XU)) / (function(XL) - function(XU))
     EA = abs(((Xr-Xrl)/Xr)*100)
 
     x = x+1
 
-    t.add_row([x, XL, XU, volume(XL), volume(XU), float(volume(XL) * volume(Xr)), Xr, volume(Xr), EA])
-    def volume(x):
+    t.add_row([x, XL, XU, function(XL), function(XU), float(function(XL) * function(Xr)), Xr, function(Xr), EA])
+    def function(x):
         return -25+82*x-90*x**2+44*x**3-8*x**4+0.7*x**5
 
 print(t)
