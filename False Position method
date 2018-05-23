@@ -1,0 +1,50 @@
+from prettytable import PrettyTable
+
+
+
+XL = float(.5)
+
+
+XU = float(1)
+
+def volume(x):
+   return -25+82*x-90*x**2+44*x**3-8*x**4+0.7*x**5
+
+t = PrettyTable(["Iteration", "Xl", "XU", "F(XL)", "F(XU)", "F(XR)*F(XU)", "XR", "F(XR)", "EA"])#headers
+
+EA = 100
+
+x = 0
+
+Xr =  XU - (volume(XU)*(XL-XU))/(volume(XL)-volume(XU))
+
+t.add_row([x, XL, XU, volume(XL), volume(XU), volume(XL) * volume(Xr), Xr, volume(Xr), EA])
+
+while EA > .2:
+    if volume(XL)*volume(Xr) < 0:
+
+         XU=Xr
+
+    else:
+
+        XL = Xr
+
+    Xrl = Xr
+    Xr = XU - (volume(XU)*(XL - XU)) / (volume(XL) - volume(XU))
+    EA = abs(((Xr-Xrl)/Xr)*100)
+
+    x = x+1
+
+    t.add_row([x, XL, XU, volume(XL), volume(XU), float(volume(XL) * volume(Xr)), Xr, volume(Xr), EA])
+    def volume(x):
+        return -25+82*x-90*x**2+44*x**3-8*x**4+0.7*x**5
+
+print(t)
+e = "EXIT"
+y = 0
+while y != e :
+    print("Type EXIT to close")
+    y = input()
+
+else:
+    exit()
