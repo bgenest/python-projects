@@ -1,0 +1,58 @@
+import math
+from prettytable import PrettyTable
+
+R = 3
+
+V = 30
+
+pi = math.pi
+
+print("Enter Xl")
+
+XL = float(input())
+
+print("Enter Xu")
+
+XU = float(input())
+
+Xr = float((XL + XU)/2)
+
+PE = float(abs ((XU-XL)/(XU+XL)) * 100)
+
+x = 0
+
+def volume(x):
+
+   return float(pi*x**2*((3*R-x)/3)-V)
+
+
+t = PrettyTable(["Iteration", "Xl", "XU", "F(XL)", "F(XU)", "F(XR)*F(XU)", "XR", "F(XR)", "PE"])
+
+t.add_row([x, XL, XU, volume(XL), volume(XU), float(volume(XL) * volume(Xr)), Xr, volume(Xr), PE])
+
+while PE > .5:
+
+    if volume(XL)*volume(Xr) < 0:
+
+         XU=Xr
+
+    else:
+
+        XL = Xr
+
+    Xr = float((XL + XU) / 2)
+
+    PE = float(abs((XU - XL) / (XU + XL)) * 100)
+
+    x = x+1
+
+    t.add_row([x, XL, XU, volume(XL), volume(XU), float(volume(XL) * volume(Xr)), Xr, volume(Xr), PE])
+    def volume(x):
+
+        return pi * x ** 2 * ((3 * R - x) / 3) - V
+
+
+
+
+
+print(t)
