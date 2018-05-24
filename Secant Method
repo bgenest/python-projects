@@ -1,0 +1,23 @@
+
+from prettytable import PrettyTable
+import numpy
+
+
+def func(y):
+
+    return 2*numpy.sin(numpy.sqrt(y))
+
+
+t = PrettyTable(["Iteration", "Xo", "EA"])  # headers
+
+EA, xo, i = 100, .5, 0
+
+t.add_row([i, "%.4f" % xo, "%.4f" % EA])
+
+while EA > .002:
+    i = i+1
+    x = func(xo)
+    EA = abs((func(xo) - xo)/func(xo)*100)
+    xo = x
+    t.add_row([i, "%.4f" % xo, "%.4f" % EA])
+print(t)
