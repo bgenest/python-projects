@@ -32,7 +32,6 @@ if C != 1 and C != 2:
     print('Invalid Character for Conservative ')
     exit()
 
-
 sp = float((x**2-x*y+y**2+3*t**2)**(1/2))
 
 oa = float(((x+y)/2)+(((x-y)/2)**2+t**2)**(1/2))
@@ -106,7 +105,6 @@ elif BD == 1 and C == 2 and oa >= 0 >= ob and abs(ob/oa) >= 0:
     suc = float(input('Enter value:'))
     g = ((((suc-sut)*oa)/(suc*sut)) - (ob/suc))**(-1)
     print("%.4f" % g)
-
 
 elif BD == 1 and C == 2 and 0 >= oa >= ob:
     # MM
