@@ -38,7 +38,6 @@ for relief_name, relief in border_effects.items():
     label.pack()
 
 window.mainloop()
-
 """
 
 import tkinter as tk
