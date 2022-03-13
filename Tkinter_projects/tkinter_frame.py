@@ -18,7 +18,9 @@ frame_b.pack()
 
 window.mainloop()
 """
-"""
+
+##Boarder effects
+
 import tkinter as tk
 
 border_effects = {
@@ -54,3 +56,4 @@ frame3 = tk.Frame(master=window, width=100, height=100, bg="red")
 frame3.pack(fill=tk.X)
 
 window.mainloop()
+"""
